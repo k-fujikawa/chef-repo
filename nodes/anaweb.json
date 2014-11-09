@@ -1,0 +1,46 @@
+{
+  "run_list": [
+    "recipe[rpm]",
+    "recipe[mysql]"
+    // "recipe[dotfiles]",
+    // "recipe[vim]",
+    // "recipe[peco]",
+    // "recipe[rbenv]",
+    // "recipe[gem]"
+  ],
+  "automatic": {
+    "ipaddress": "anaweb"
+  },
+  "user" : {
+    "name" : "vagrant",
+    "group" : "vagrant",
+    "home" : "/home/vagrant"
+  },
+  "rbenv" : {
+    "version": "2.1.4"
+  },
+  "mysql" : {
+    "version" : "5.6.21-1.el6.x86_64",
+    "file_name" : "MySQL-5.6.21-1.el6.x86_64.rpm-bundle.tar",
+    "remote_uri" : "http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.6/MySQL-5.6.21-1.el6.x86_64.rpm-bundle.tar",
+    "rpm" : [
+      {
+        "rpm_file" : "MySQL-client-5.6.21-1.el6.x86_64.rpm",
+        "package_name" : "MySQL-client"
+      },
+      {
+        "rpm_file" : "MySQL-devel-5.6.21-1.el6.x86_64.rpm",
+        "package_name" : "MySQL-devel"
+      },
+      {
+        "rpm_file" : "MySQL-shared-5.6.21-1.el6.x86_64.rpm",
+        "package_name" : "MySQL-shared"
+      },
+      {
+        "rpm_file" : "MySQL-server-5.6.21-1.el6.x86_64.rpm",
+        "package_name" : "MySQL-server"
+      }
+    ]
+
+  }
+}
