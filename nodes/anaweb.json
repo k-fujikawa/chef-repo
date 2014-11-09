@@ -1,12 +1,13 @@
 {
   "run_list": [
+    "recipe[vagrant]",
     "recipe[rpm]",
-    "recipe[mysql]"
-    // "recipe[dotfiles]",
-    // "recipe[vim]",
-    // "recipe[peco]",
-    // "recipe[rbenv]",
-    // "recipe[gem]"
+    "recipe[mysql]",
+    "recipe[dotfiles]",
+    "recipe[vim]",
+    "recipe[peco]",
+    "recipe[rbenv]",
+    "recipe[gem]"
   ],
   "automatic": {
     "ipaddress": "anaweb"
@@ -20,7 +21,8 @@
     "version": "2.1.4"
   },
   "mysql" : {
-    "version" : "5.6.21-1.el6.x86_64",
+    "version" : "5.6",
+    "full_version" : "5.6.21-1.el6.x86_64",
     "file_name" : "MySQL-5.6.21-1.el6.x86_64.rpm-bundle.tar",
     "remote_uri" : "http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.6/MySQL-5.6.21-1.el6.x86_64.rpm-bundle.tar",
     "rpm" : [
