@@ -1,7 +1,7 @@
 [mysqld_safe]
 user=mysql
 datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
+socket=/tmp/mysql.sock
 
 sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 
@@ -28,3 +28,6 @@ innodb_read_io_threads          = <%= @innodb_read_io_threads %>
 innodb_log_buffer_size          = <%= @innodb_log_buffer_size %>
 innodb_log_file_size            = <%= @innodb_log_file_size %>
 innodb_flush_log_at_trx_commit  = <%= @innodb_flush_log_at_trx_commit %>
+
+[client]
+socket=/tmp/mysql.sock

@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-my_cnf_path  = (node['mysql']['version'] == '5.6')? '/usr/my.cnf' : '/etc/my.cnf'
+my_cnf_path  = '/etc/my.cnf'
 
 bash 'remove_installed_mysql' do
   only_if 'yum list installed | grep mysql*'

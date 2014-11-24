@@ -3,22 +3,24 @@
     "recipe[rpm]",
     "recipe[mysql]",
     "recipe[dotfiles]",
-    "recipe[vim]",
-    "recipe[peco]",
+    /* "recipe[peco]", */
     "recipe[rbenv]",
     "recipe[pyenv]",
     "recipe[gem]"
   ],
   "automatic": {
-    "ipaddress": "anaweb"
+    "ipaddress": "sakura"
   },
   "user" : {
-    "name" : "vagrant",
-    "group" : "vagrant",
-    "home" : "/home/vagrant"
+    "name" : "kazuki.fujikawa",
+    "group" : "kazuki.fujikawa",
+    "home" : "/home/kazuki.fujikawa"
   },
   "rbenv" : {
     "version": "2.1.4"
+  },
+  "pyenv" : {
+    "version": "2.7.8"
   },
   "mysql" : {
     "version" : "5.6",
@@ -46,3 +48,4 @@
 
   }
 }
+

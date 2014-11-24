@@ -41,10 +41,23 @@ bash "rbenv" do
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
     rbenv install #{node['rbenv']['version']}
-    rbenv global #{node['rbenv']['version']}
+    rbenv local #{node['rbenv']['version']}
     rbenv versions
     rbenv rehash
   EOC
 
   not_if { File.exists?(node['user']['home'] + "/.rbenv/shims/ruby") }
 end
+
+# bash "gem" do
+#   user node['user']['name']
+#   group node['user']['group']
+#   cwd node['user']['home']
+#   environment "HOME" => node['user']['home']
+#
+#   code <<-EOC
+#     gem install bundle
+#     gem install rake
+#   EOC
+# end
+#
