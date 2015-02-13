@@ -1,0 +1,25 @@
+{
+  "run_list": [
+    /* "recipe[rpm]", */
+    /* "recipe[dotfiles]", */
+    /* "recipe[vim]", */
+    /* "recipe[rbenv]", */
+    /* "recipe[pyenv]", */
+    "recipe[mecab]"
+    /* "recipe[gem]" */
+  ],
+  "automatic": {
+    "ipaddress": "dev"
+  },
+  "user" : {
+    "name" : "vagrant",
+    "group" : "vagrant",
+    "home" : "/home/vagrant"
+  },
+  "rbenv" : {
+    "version": "2.1.4"
+  },
+  "pyenv" : {
+    "version": "2.7.8"
+  }
+}

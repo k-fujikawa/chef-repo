@@ -3,7 +3,6 @@
     "recipe[rpm]",
     "recipe[mysql]",
     "recipe[dotfiles]",
-    /* "recipe[peco]", */
     "recipe[rbenv]",
     "recipe[pyenv]",
     "recipe[gem]"

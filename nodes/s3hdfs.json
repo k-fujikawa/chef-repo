@@ -1,0 +1,20 @@
+{
+  "run_list": [
+    "recipe[rpm]",
+    "recipe[dotfiles]",
+    "recipe[vim]",
+    "recipe[rbenv]",
+    "recipe[gem]"
+  ],
+  "automatic": {
+    "ipaddress": "s3hdfs"
+  },
+  "user" : {
+    "name" : "vagrant",
+    "group" : "vagrant",
+    "home" : "/home/vagrant"
+  },
+  "rbenv" : {
+    "version": "2.1.4"
+  }
+}

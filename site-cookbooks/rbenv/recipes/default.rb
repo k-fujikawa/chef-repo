@@ -49,15 +49,3 @@ bash "rbenv" do
   not_if { File.exists?(node['user']['home'] + "/.rbenv/shims/ruby") }
 end
 
-# bash "gem" do
-#   user node['user']['name']
-#   group node['user']['group']
-#   cwd node['user']['home']
-#   environment "HOME" => node['user']['home']
-#
-#   code <<-EOC
-#     gem install bundle
-#     gem install rake
-#   EOC
-# end
-#
