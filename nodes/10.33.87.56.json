@@ -1,0 +1,26 @@
+{
+  "run_list": [
+    "recipe[rbenv]",
+    "recipe[pyenv]",
+    "recipe[mecab]",
+    "recipe[elasticsearch]",
+    "recipe[gem]"
+  ],
+  "automatic": {
+    "ipaddress": "10.33.87.56"
+  },
+  "user" : {
+    "name" : "analytics",
+    "group" : "analytics",
+    "home" : "/home/analytics"
+  },
+  "ndenv" : {
+    "version": "0.12.2"
+  },
+  "rbenv" : {
+    "version": "2.2.0"
+  },
+  "pyenv" : {
+    "version": "2.7.8"
+  }
+}

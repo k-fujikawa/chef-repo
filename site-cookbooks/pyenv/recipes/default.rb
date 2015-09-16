@@ -7,67 +7,36 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{
-atlas-sse3-devel
-gcc-gfortran
-bzip2-devel
-}.each do |pkg|
-  package pkg do
-    action :install
-    not_if "which #{pkg}"
-  end
-end
+software_dir = node['pyenv']['software_dir']
+local_user   = node['pyenv']['local_user']
+local_group  = node['pyenv']['local_group']
+profile_path = local_user == 'root' ? '/etc/profile' : '~/.bashrc'
 
-git node['user']['home'] + '/.pyenv' do
-  user node['user']['name']
-  group node['user']['group']
+git node['pyenv']['software_dir'] do
+  user node['pyenv']['local_user']
+  group node['pyenv']['local_group']
   repository "git://github.com/yyuu/pyenv.git"
   reference "master"
-  # action :sync
   action :checkout
 end
 
 bash "pyenv" do
-  user node['user']['name']
-  group node['user']['group']
-  cwd node['user']['home']
-  environment "HOME" => node['user']['home']
+  user node['pyenv']['local_user']
+  group node['pyenv']['local_group']
+  cwd "#{software_dir}/plugins/python-build"
 
   code <<-EOC
-    export PATH="$HOME/.pyenv/bin:$PATH"
+    export PYENV_ROOT="#{software_dir}"
+    export PATH="#{software_dir}/bin:$PATH"
+    ./install.sh
     eval "$(pyenv init -)"
-    pyenv install #{node['pyenv']['version']}
-    pyenv local #{node['pyenv']['version']}
-    pyenv versions
-    pyenv rehash
+    CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4" pyenv install #{node['pyenv']['version']}
+    pyenv global #{node['pyenv']['version']}
+    echo 'export PYENV_ROOT="#{software_dir}"' >> #{profile_path}
+    echo 'export PATH="#{software_dir}/bin:$PATH"' >> #{profile_path}
+    echo 'eval "$(pyenv init -)"' >> #{profile_path}
   EOC
 
-  not_if { File.exists?(node['user']['home'] + "/.pyenv/shims/python") }
+  not_if { File.exists?("#{software_dir}/shims/python") }
 end
 
-# python_pip "numpy" do
-#   action :install
-# end
-#
-# python_pip "scipy" do
-#   action :install
-# end
-#
-# python_pip "gensim" do
-#   action :install
-# end
-bash "pip" do
-  user node['user']['name']
-  group node['user']['group']
-  cwd node['user']['home']
-  environment "HOME" => node['user']['home']
-
-  code <<-EOC
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    pip install numpy
-    pip install scipy
-    pip install gensim
-  EOC
-end
-#

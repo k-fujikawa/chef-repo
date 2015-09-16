@@ -7,27 +7,25 @@
 # All rights reserved - Do Not Redistribute
 #
 
-git "/tmp/ruby-build" do
-  repository "git://github.com/sstephenson/ruby-build.git"
-  reference "master"
-  # action :sync
-  action :checkout
-end
-
-bash "install-rubybuild" do
-  not_if 'which ruby-build'
-  code <<-EOC
-    cd /tmp/ruby-build
-    ./install.sh
-  EOC
-end
-
 git node['user']['home'] + "/.rbenv" do
   user node['user']['name']
   group node['user']['group']
   repository "git://github.com/sstephenson/rbenv.git"
   reference "master"
-  # action :sync
+  action :checkout
+end
+
+directory "#{node['user']['home']}/.rbenv/plugins/" do
+  user node['user']['name']
+  group node['user']['group']
+  action :create
+end
+
+git "#{node['user']['home']}/.rbenv/plugins/ruby-build/" do
+  user node['user']['name']
+  group node['user']['group']
+  repository "git://github.com/sstephenson/ruby-build.git"
+  reference "master"
   action :checkout
 end
 
@@ -41,7 +39,7 @@ bash "rbenv" do
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
     rbenv install #{node['rbenv']['version']}
-    rbenv local #{node['rbenv']['version']}
+    rbenv global #{node['rbenv']['version']}
     rbenv versions
     rbenv rehash
   EOC

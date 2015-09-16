@@ -1,0 +1,23 @@
+{
+  "run_list": [
+    "recipe[ubuntu]",
+    "recipe[pyenv]"
+  ],
+  "automatic": {
+    "ipaddress": "dev-chainer"
+  },
+  "user" : {
+    "name" : "vagrant",
+    "group" : "vagrant",
+    "home" : "/home/vagrant"
+  },
+  "pyenv" : {
+    "version" : "2.7.9",
+    "software_dir" : "/opt/pyenv",
+    "local_user" : "root",
+    "local_group" : "root"
+  },
+  "caffe" : {
+    "gpu" : false
+  }
+}

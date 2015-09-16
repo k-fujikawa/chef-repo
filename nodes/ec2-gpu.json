@@ -1,0 +1,27 @@
+{
+  "run_list": [
+    "recipe[ubuntu]",
+    "recipe[pyenv]",
+    "recipe[caffe]"
+  ],
+  "automatic": {
+    "ipaddress": "ec2-gpu"
+  },
+  "user" : {
+    "name" : "ubuntu",
+    "group" : "ubuntu",
+    "home" : "/home/ubuntu"
+  },
+  "pyenv" : {
+    "version" : "2.7.9",
+    "software_dir" : "/opt/pyenv",
+    "local_user" : "root",
+    "local_group" : "root"
+  },
+  "caffe" : {
+    "gpu" : true,
+    "local_user" : "ubuntu",
+    "local_group" : "ubuntu"
+  }
+}
+

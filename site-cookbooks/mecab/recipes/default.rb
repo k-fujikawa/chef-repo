@@ -33,6 +33,7 @@ end
 }.each do |pack|
   package pack do
     action :install
+    options '--enablerepo=epel,base'
   end
 end
 

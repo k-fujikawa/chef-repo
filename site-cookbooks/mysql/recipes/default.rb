@@ -30,11 +30,11 @@ bash "install_mysql" do
   EOH
 end
 
-node['mysql']['rpm'].each do |rpm|
-  package rpm['package_name'] do
+node['mysql']['package_name'].each do |package_name|
+  package package_name do
     action :install
     provider Chef::Provider::Package::Rpm
-    source "/tmp/#{rpm['rpm_file']}"
+    source "/tmp/#{package_name}-#{node['mysql']['full_version']}.rpm"
   end
 end
 
@@ -78,14 +78,16 @@ if node["mysql"]["version"].to_f >= 5.6
   end
 
   cookbook_file '/tmp/password_set' do
+    user "root"
     only_if 'ls /root/.mysql_secret'
     source "password_set"
   end
 
   execute 'password_set' do
-    only_if 'ls /root/.mysql_secret'
     user 'root'
-    command 'chmod +x /tmp/password_set && /tmp/password_set && rm -f /tmp/password_set'
+    only_if 'ls /root/.mysql_secret'
+    # command 'chmod +x /tmp/password_set && /tmp/password_set && rm -f /tmp/password_set'
+    command 'chmod +x /tmp/password_set && /tmp/password_set'
   end
 
   package 'expect' do

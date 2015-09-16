@@ -30,10 +30,11 @@ bash "setup" do
   cwd node['user']['home'] + '/dotfiles'
   environment ({'HOME' => node['user']['home']})
   code <<-EOH
-    sh setup.sh
+    bash setup.sh
   EOH
 end
 
-execute 'set zsh as default shell' do
-  command "chsh -s /bin/zsh #{node['user']['name']}"
-end
+package "zsh"
+# execute 'set zsh as default shell' do
+#   command "chsh -s /bin/zsh #{node['user']['name']}"
+# end

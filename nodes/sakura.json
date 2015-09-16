@@ -1,11 +1,12 @@
 {
   "run_list": [
-    "recipe[rpm]",
-    "recipe[mysql]",
-    "recipe[dotfiles]",
-    "recipe[rbenv]",
-    "recipe[pyenv]",
-    "recipe[gem]"
+    "recipe[mecab]"
+    /* "recipe[rpm]", */
+    /* "recipe[mysql]", */
+    /* "recipe[dotfiles]", */
+    /* "recipe[rbenv]", */
+    /* "recipe[pyenv]", */
+    /* "recipe[gem]" */
   ],
   "automatic": {
     "ipaddress": "sakura"
@@ -23,26 +24,15 @@
   },
   "mysql" : {
     "version" : "5.6",
-    "full_version" : "5.6.21-1.el6.x86_64",
-    "file_name" : "MySQL-5.6.21-1.el6.x86_64.rpm-bundle.tar",
-    "remote_uri" : "http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.6/MySQL-5.6.21-1.el6.x86_64.rpm-bundle.tar",
-    "rpm" : [
-      {
-        "rpm_file" : "MySQL-client-5.6.21-1.el6.x86_64.rpm",
-        "package_name" : "MySQL-client"
-      },
-      {
-        "rpm_file" : "MySQL-devel-5.6.21-1.el6.x86_64.rpm",
-        "package_name" : "MySQL-devel"
-      },
-      {
-        "rpm_file" : "MySQL-shared-5.6.21-1.el6.x86_64.rpm",
-        "package_name" : "MySQL-shared"
-      },
-      {
-        "rpm_file" : "MySQL-server-5.6.21-1.el6.x86_64.rpm",
-        "package_name" : "MySQL-server"
-      }
+    "full_version" : "5.6.22-1.el6.x86_64",
+    "file_name" : "MySQL-5.6.22-1.el6.x86_64.rpm-bundle.tar",
+    "remote_uri" : "http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.6/MySQL-5.6.22-1.el6.x86_64.rpm-bundle.tar",
+    "package_name" : [
+      "MySQL-client",
+      "MySQL-devel",
+      "MySQL-shared",
+      "MySQL-shared-compat",
+      "MySQL-server"
     ]
 
   }

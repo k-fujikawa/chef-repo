@@ -5,8 +5,11 @@
     /* "recipe[vim]", */
     /* "recipe[rbenv]", */
     /* "recipe[pyenv]", */
-    "recipe[mecab]"
-    /* "recipe[gem]" */
+    /* "recipe[mecab]", */
+    /* "recipe[mysql]", */
+    "recipe[elasticsearch]"
+    /* "recipe[gem]", */
+    /* "recipe[node]" */
   ],
   "automatic": {
     "ipaddress": "dev"
@@ -21,5 +24,25 @@
   },
   "pyenv" : {
     "version": "2.7.8"
+  },
+  "ndenv" : {
+    "version": "0.12.2"
+  },
+  "mysql" : {
+    "version" : "5.6",
+    "full_version" : "5.6.24-1.el6.x86_64",
+    "file_name" : "MySQL-5.6.24-1.el6.x86_64.rpm-bundle.tar",
+    "remote_uri" : "http://ftp.jaist.ac.jp/pub/mysql/Downloads/MySQL-5.6/MySQL-5.6.24-1.el6.x86_64.rpm-bundle.tar",
+    "package_name" : [
+      "MySQL-client",
+      "MySQL-devel",
+      "MySQL-shared",
+      "MySQL-shared-compat",
+      "MySQL-server"
+    ]
+  },
+  "java" : {
+    "file_name" : "jdk-8u40-linux-i586.rpm",
+    "remote_uri" : "http://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-linux-i586.rpm"
   }
 }

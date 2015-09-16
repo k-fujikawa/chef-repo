@@ -1,0 +1,9 @@
+{
+    "id": "plugins",
+    "_default": {
+        "plugins": {
+            "elasticsearch/elasticsearch-analysis-kuromoji": { "version": "2.5.0" },
+            "royrusso/elasticsearch-HQ": {}
+        }
+    }
+}
